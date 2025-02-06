@@ -1,4 +1,6 @@
 export { createBoardStore } from "./model/board.store";
+export { BoardPreview } from "./ui/board-preview";
+export { BoardSelect } from "./ui/board-select";
 export type { BoardStore } from "./model/board.store";
 export { useBoards } from "./model/boards.store";
 export type { BoardsStore } from "./model/boards.store";
