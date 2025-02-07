@@ -1,5 +1,6 @@
 import { Session, useSession } from "@/entities/session";
 import { BoardPartial, useBoards } from "@/entities/board";
+import { useClearTasks } from "@/entities/task";
 import { RemoveIcon } from "@/shared/ui/ui-icons";
 import { useGetConfirmation } from "@/shared/lib/confirmation";
 
@@ -28,6 +29,7 @@ function useRemoveBoard() {
   const canRemoveFn = useCanRemoveBoardFn();
 
   const { removeBoard } = useBoards();
+  const clearTasks = useClearTasks();
 
   return async (boardId: string) => {
     const confirmation = await getConfirmation({
@@ -36,6 +38,7 @@ function useRemoveBoard() {
 
     if (canRemoveFn(boardId) && confirmation) {
       await removeBoard(boardId);
+      await clearTasks({ boardId });
     }
   };
 }

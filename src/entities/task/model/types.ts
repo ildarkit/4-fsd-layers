@@ -20,7 +20,7 @@ export type CreateTaskData = {
 };
 
 export type UpdateTaskData = {
-  title: string;
+  title?: string;
   description?: string;
   boardId?: string;
 };

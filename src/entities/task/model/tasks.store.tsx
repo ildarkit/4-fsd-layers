@@ -39,8 +39,8 @@ export const useTasks = create<TasksStore>((set, get) => ({
       tasks: await tasksRepository.getTasks(),
     });
   },
-  removeTask: async (userId: string) => {
-    await tasksRepository.removeTask(userId);
+  removeTask: async (id: string) => {
+    await tasksRepository.removeTask(id);
     set({
       tasks: await tasksRepository.getTasks(),
     });
