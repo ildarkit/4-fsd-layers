@@ -31,7 +31,7 @@ function useRemoveTask() {
 
   return async (taskId: string) => {
     const confirmation = await getConfirmation({
-      description: "Вы действительно хотите удалить доску?",
+      description: "Вы действительно хотите удалить задачу?",
     });
 
     if (canRemoveFn(taskId) && confirmation) {

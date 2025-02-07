@@ -12,6 +12,7 @@ export const tasksRepository = {
           title: task.title,
           authorId: task.authorId,
           boardId: task.boardId,
+          description: task.description,
         })),
       );
   },

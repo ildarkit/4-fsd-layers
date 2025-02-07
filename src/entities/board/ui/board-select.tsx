@@ -1,4 +1,4 @@
-import { useBoards, Board, BoardPreview } from "@/entities/board";
+import { useBoards, BoardPreview, BoardPartial } from "@/entities/board";
 import { UiSelect } from "@/shared/ui/ui-select-field";
 
 export function BoardSelect({
@@ -21,7 +21,7 @@ export function BoardSelect({
 
   const options = required ? boards : [undefined, ...boards];
 
-  const onChangeBoard = (board?: Board) => {
+  const onChangeBoard = (board?: BoardPartial) => {
     onChangeBoardId(board?.id);
   };
   console.log(options);

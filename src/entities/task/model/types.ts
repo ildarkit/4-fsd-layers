@@ -9,6 +9,7 @@ export type Task = {
 export type TaskPartial = {
   id: string;
   title: string;
+  description?: string;
   authorId: string;
   boardId?: string;
 };
@@ -19,8 +20,7 @@ export type CreateTaskData = {
 };
 
 export type UpdateTaskData = {
-  title?: string;
+  title: string;
   description?: string;
-  authorId?: string;
   boardId?: string;
 };
