@@ -5,6 +5,8 @@ import { UiTextField } from "@/shared/ui/ui-text-field";
 import { useUpdateTask } from "../model/use-update-task";
 import { UpdateTaskData, useTasks } from "@/entities/task";
 import { BoardSelect } from "@/entities/board";
+import { useStrictContext } from "@/shared/lib/react";
+import { updateTaskDepsContext } from "../lib/update-tasks-deps";
 
 export function UpdateTaskModal({
   onClose,
@@ -18,6 +20,7 @@ export function UpdateTaskModal({
   const { control, handleSubmit } = useForm<UpdateTaskData>({
     defaultValues: task,
   });
+  const { canViewBoard } = useStrictContext(updateTaskDepsContext);
 
   const { updateTask } = useUpdateTask(taskId);
 
@@ -65,6 +68,7 @@ export function UpdateTaskModal({
                 onChangeBoardId={onChange}
                 error={fieldState.error?.message}
                 className="w-full"
+                filterOptions={(b) => canViewBoard(b.id)}
               />
             )}
           />

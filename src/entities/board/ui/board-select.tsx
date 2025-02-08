@@ -8,6 +8,7 @@ export function BoardSelect({
   boardId,
   required,
   error,
+  filterOptions = () => true,
 }: {
   error?: string;
   className?: string;
@@ -15,16 +16,16 @@ export function BoardSelect({
   label?: string;
   onChangeBoardId: (id?: string) => void;
   required?: boolean;
+  filterOptions?: (board: BoardPartial) => boolean;
 }) {
   const board = useBoards((s) => (boardId ? s.getBoardById(boardId) : undefined));
-  const boards = useBoards((s) => s.boards);
+  const boards = useBoards((s) => s.boards.filter(filterOptions));
 
   const options = required ? boards : [undefined, ...boards];
 
   const onChangeBoard = (board?: BoardPartial) => {
     onChangeBoardId(board?.id);
   };
-  console.log(options);
 
   return (
     <UiSelect
